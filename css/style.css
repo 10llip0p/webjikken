@@ -1,0 +1,22 @@
+.navbar-default {
+    background-color: #FF8C00;
+    border-color: #FF4500;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #ffffff;
+}
+.bcenterWrap{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.bcenter{
+    position: absolute;
+    top: 50%;
+    right: -100%;
+    bottom: 50%;
+    left: -100%;
+    margin: auto;
+    width: 50%;
+    height: 50%;
+}
