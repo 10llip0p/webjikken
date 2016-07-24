@@ -1,5 +1,17 @@
 var map;
+var jsonBody;
 function initMap() {
+    //ajax
+    $.ajax({
+        type: "POST",
+        url: "../event.php",
+        dataType: "json",
+    }).done(function (result) {
+        console.log(result);
+        //console.log(result.rest[1].name);
+        jsonBody = result;
+    });
+
     map = new google.maps.Map(document.getElementById('map-canvas'), {
         center: {
             lat: 36.090410,

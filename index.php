@@ -29,7 +29,7 @@
         <div class="text-center">
 			<h1>mohikan!</h1>
 		</div>
-    	<form action="event.php" method="post">
+    	<form action="result.php" method="post">
 			<div class="form-group">
 				<input type="text" name="freeword" class="form-control">
 			</div>

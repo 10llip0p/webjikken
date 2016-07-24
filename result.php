@@ -1,10 +1,14 @@
 <?php
     session_start();
+    require("keys.php");
 
-    //取得した結果をオブジェクト化
-    $obj  = $_SESSION["obj"];
+    $_SESSION["freeword"] = $_POST["freeword"];
 
 /*
+    //取得した結果をオブジェクト化
+    $json  = $_SESSION["json"];
+
+    $obj = json_decode($json);
     //結果をパース
     //トータルヒット件数、店舗番号、店舗名、最寄の路線、最寄の駅、最寄駅から店までの時間、店舗の小業態を出力
     foreach((array)$obj as $key => $val){
@@ -62,9 +66,9 @@
     <script src="js/bootstrap.min.js"></script>
 
     <script src="js/map.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key="></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $gm_key ?>"></script>
 </head>
-<body onload="initMap();">
+<body onload="initMap()">
 
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container-fluid">

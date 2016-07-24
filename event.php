@@ -1,9 +1,10 @@
 <?php
     session_start();
+    require("keys.php");
 
     //ぐるなびapiからjsonを取得
     $uri   = "http://api.gnavi.co.jp/RestSearchAPI/20150630/";
-    $acckey= "";
+    $acckey= $gn_key;
     //フォーマット
     $format= "json";
     //緯度・経度
@@ -12,7 +13,7 @@
     //300m/range
     $range = 5;
     $hits = 500;
-    $word = $_POST["freeword"];
+    $word = $_SESSION["freeword"];
     $word_enc = urlencode($word);
 
     //URL
@@ -21,9 +22,12 @@
     //API実行
     $json = file_get_contents($url);
 
-    $_SESSION["obj"] = json_decode($json);
+    header('Content-Type: application/json; charset=utf-8');
+    echo $json;
+    // $_SESSION["json"] = $json;
 
-    header("Location: result.php");
+    //header("Location: result.php");
 
-    exit;
+   // exit;
+
 ?>
