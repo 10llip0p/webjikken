@@ -10,6 +10,7 @@
 
     $obj = json_decode($json);
 
+    //jsonから座標を取得
     if($obj->{"status"} == "OK") {
         $location = $obj->{"results"}[0]->{"geometry"}->{"location"};
         $lat = $location->{'lat'};

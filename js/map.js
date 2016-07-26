@@ -184,7 +184,7 @@ function initMap() {
     });
 }
 
-//geocoder
+//geocodeAPIを試す
 function codeToAddress(geoAddress) {
     geocoder = new google.maps.Geocoder();
     geocoder.geocode({
