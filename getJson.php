@@ -14,7 +14,7 @@
     //300m/range
     $range = 5;
     $hits = 500;
-    $word = $_SESSION["freeword"];
+    $word = $_POST["freeword"];
     $word_enc = urlencode($word);
 
     //URL
@@ -23,7 +23,12 @@
     //API実行
     $json = file_get_contents($url);
 
-    header('Content-Type: application/json; charset=utf-8');
-    echo $json;
+    $obj = json_decode($json);
 
+    $_SESSION["obj"] = $obj;
+    $_SESSION["freeword"] = $word;
+
+    header("Location: result.php");
+
+    exit;
 ?>

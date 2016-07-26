@@ -2,7 +2,6 @@
     session_start();
     require("keys.php");
 
-    $_SESSION["freeword"] = $_POST["freeword"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
