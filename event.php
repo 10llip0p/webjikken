@@ -8,8 +8,9 @@
     //フォーマット
     $format= "json";
     //緯度・経度
-    $lat   = 36.090410;
-    $lon   = 140.107721;
+    $lat   = 36.096903;
+    $lon   = 140.099045;
+
     //300m/range
     $range = 5;
     $hits = 500;
@@ -24,10 +25,5 @@
 
     header('Content-Type: application/json; charset=utf-8');
     echo $json;
-    // $_SESSION["json"] = $json;
-
-    //header("Location: result.php");
-
-   // exit;
 
 ?>

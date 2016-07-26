@@ -3,52 +3,6 @@
     require("keys.php");
 
     $_SESSION["freeword"] = $_POST["freeword"];
-
-/*
-    //取得した結果をオブジェクト化
-    $json  = $_SESSION["json"];
-
-    $obj = json_decode($json);
-    //結果をパース
-    //トータルヒット件数、店舗番号、店舗名、最寄の路線、最寄の駅、最寄駅から店までの時間、店舗の小業態を出力
-    foreach((array)$obj as $key => $val){
-        if(strcmp($key, "total_hit_count" ) == 0 ){
-            echo "total:".$val."\n";
-        }
-
-        if(strcmp($key, "hit_per_page") == 0) {
-            echo "hits:".$val."\n";
-        }
-        if(strcmp($key, "rest") == 0){
-            foreach((array)$val as $restArray){
-                //if(checkString($restArray->{'id'}))   echo $restArray->{'id'}."\t";
-                if(checkString($restArray->{'name'})) echo $restArray->{'name'}."\t";
-                if(checkString($restArray->{'latitude'}))    echo $restArray->{'latitude'}."\t";
-                if(checkString($restArray->{'longitude'}))    echo $restArray->{'longitude'};
-                //if(checkString($restArray->{'access'}->{'station'})) echo (string)$restArray->{'access'}->{'station'}."\t";
-                //if(checkString($restArray->{'access'}->{'walk'}))    echo (string)$restArray->{'access'}->{'walk'}."分\t";
-
-                //foreach((array)$restArray->{'code'}->{'category_name_s'} as $v){
-                //    if(checkString($v)) echo $v."\t";
-                //}
-                echo "\n";
-            }
-
-        }
-    }
-
-    //文字列であるかをチェック
-    function checkString($input)
-    {
-
-        if(isset($input) && is_string($input)) {
-            return true;
-        }else{
-            return false;
-        }
-
-    }
-*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
