@@ -1,6 +1,8 @@
 var map;
 var marker = [];
+var infoWindow = [];
 var jsonBody;
+var contentThing;
 function initMap() {
    //mapの描画
    map = new google.maps.Map(document.getElementById('map-canvas'), {
@@ -139,6 +141,7 @@ function initMap() {
         jsonBody = result;
         console.log(jsonBody);
 
+        $('#total-count').text(jsonBody.total_hit_count + ' 件')
         //マーカーの設置
         for (var i in jsonBody.rest) {
             console.log(i);
@@ -149,7 +152,24 @@ function initMap() {
                 },
                 map: map
             });
+            contentThing = '<div>' + jsonBody.rest[i].name +
+                            '</div><div>カテゴリ: ' + jsonBody.rest[i].category +
+                            '</div><div>休業日: ' + jsonBody.rest[i].holiday +
+                            '</div><div>営業時間: ' + jsonBody.rest[i].opentime +
+                            '</div><div>問い合わせ: ' + jsonBody.rest[i].tel +
+                            '</div><div><a href=\"' + jsonBody.rest[i].url + '\">' + jsonBody.rest[i].url +
+                            '</div>';
+            infoWindow[i] = new google.maps.InfoWindow({
+                content: contentThing
+            })
+            markerEvent(i);
           // console.log(marker[i]);
         }
    });
+}
+
+function markerEvent(i) {
+    marker[i].addListener('click', function () {
+        infoWindow[i].open(map, marker[i]);
+    });
 }

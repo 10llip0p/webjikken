@@ -6,7 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>mohikan</title>
 
-	<!-- Bootstrap -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
@@ -14,15 +13,6 @@
 	<script src="js/bootstrap.min.js"></script>
 </head>
 <body>
-
-<nav class="navbar navbar-default navbar-static-top">
-	<div class="container-fluid">
-		<!-- ナビゲーションバー -->
-		<div class="navbar-header">
-			<a class="navbar-brand" href="./index.php">mohikan</a>
-		</div>
-	</div>
-</nav>
 
 <div class="bcenter">
     <div class="center-block">
@@ -33,7 +23,7 @@
 			<div class="form-group">
 				<input type="text" name="freeword" class="form-control">
 			</div>
-			<button type="submit" class="btn btn-default">検索</button>
+			<p class="text-center"><button type="submit" class="btn btn-default">検索</button></p>
 		</form>
 	</div>
 </div>

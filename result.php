@@ -28,6 +28,13 @@
         <!-- ナビゲーションバー -->
         <div class="navbar-header">
             <a class="navbar-brand" href="./index.php">mohikan</a>
+            <form class="navbar-form navbar-left" role="search" action="getJson.php" method="post">
+                <div class="form-group">
+                    <input type="text" name="freeword" class="form-control" placeholder="検索キーワード">
+                </div>
+                <button type="submit" class="btn btn-default">検索</button>
+            </form>
+            <p class="navbar-text" id="total-count">読込中...</p>
         </div>
     </div>
 </nav>

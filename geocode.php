@@ -13,7 +13,6 @@
         $targetAddress = $matches[0];
         $obj_gn_id = (int)$obj_gn->{"rest"}[$i]->{"id"};
         $obj_gn_name = $obj_gn->{"rest"}[$i]->{"name"};
-       // var_dump($obj_gn_name);
         $sql_result = $db->query("SELECT * FROM geo WHERE name=='$obj_gn_name'");
         $data = $sql_result->fetchArray();
         if ($data["id"] == null) {
@@ -54,6 +53,7 @@
                 }
             }
             else {
+                //取得できなかった場合は元の座標をfloatにキャストして格納
                 $obj_gn->{"rest"}[$i]->{"latitude"} = (float)$obj_gn->{"rest"}[$i]->{"latitude"} ;
                 $obj_gn->{"rest"}[$i]->{"longitude"} = (float)$obj_gn->{"rest"}[$i]->{"longitude"} ;
 
@@ -76,7 +76,7 @@
                     return;
                 }
             }
-            usleep(250000);
+            usleep(250000); //GeocodeAPIの制限
         }
         else {
             $obj_gn->{"rest"}[$i]->{"latitude"} = $data["lat"];
