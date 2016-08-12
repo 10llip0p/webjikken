@@ -1,6 +1,8 @@
 <?php
     session_start();
     require("keys.php");
+    $lat = $_SESSION["lat"];
+    $lng = $_SESSION["lng"];
 
 ?>
 <!DOCTYPE html>
@@ -17,22 +19,22 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-
     <script src="js/map.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $gm_key ?>"></script>
 </head>
-<body onload="initMap()">
+<body onload="initMap(<?php echo $lat; ?>, <?php echo $lng; ?>)">
 
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container-fluid">
-        <!-- ナビゲーションバー -->
         <div class="navbar-header">
             <a class="navbar-brand" href="./index.php">mohikan</a>
-            <form class="navbar-form navbar-left" role="search" action="getJson.php" method="post">
+            <form id="research" class="navbar-form navbar-left" role="search" action="getJson.php" method="post">
                 <div class="form-group">
-                    <input type="text" name="freeword" class="form-control" placeholder="検索キーワード">
+                    <input type="text" name="freeword" class="form-control" value=<?php echo $_SESSION["freeword"]; ?> >
+                    <input type="hidden" value="" id="post_lat" name="post_lat">
+                    <input type="hidden" value="" id="post_lng" name="post_lng">
                 </div>
-                <button type="submit" class="btn btn-default">検索</button>
+                <button type="submit" id="subm_button" class="btn btn-default">検索</button>
             </form>
             <p class="navbar-text" id="total-count">読込中...</p>
         </div>

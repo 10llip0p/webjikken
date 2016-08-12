@@ -3,12 +3,15 @@ var marker = [];
 var infoWindow = [];
 var jsonBody;
 var contentThing;
-function initMap() {
+var cntr_lat;
+var cntr_lng;
+
+function initMap(in_lat, in_lng) {
    //mapの描画
    map = new google.maps.Map(document.getElementById('map-canvas'), {
        center: {
-           lat: 36.090410,
-           lng: 140.107721
+           lat: in_lat,
+           lng: in_lng
        },
        zoom: 14,
        disableDefaultUI: true,
@@ -166,6 +169,14 @@ function initMap() {
           // console.log(marker[i]);
         }
    });
+
+    google.maps.event.addListener(map, "drag", function() {
+        var center = map.getCenter();
+        cntr_lat = center.lat();
+        cntr_lng = center.lng();
+        console.log(cntr_lat);
+        console.log(cntr_lng);
+    });
 }
 
 function markerEvent(i) {
@@ -173,3 +184,12 @@ function markerEvent(i) {
         infoWindow[i].open(map, marker[i]);
     });
 }
+
+$(function () {
+    $('#research').submit(function () {
+        $("#post_lat").val(cntr_lat.toFixed(6));
+        $("#post_lng").val(cntr_lng.toFixed(6));
+        //alert($("#post_lng").val());
+        return true;
+    });
+})

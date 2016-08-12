@@ -8,8 +8,10 @@
     //フォーマット
     $format= "json";
     //緯度・経度
-    $lat   = 36.096903;
-    $lon   = 140.099045;
+    // $lat   = 36.096903;
+    // $lon   = 140.099045;
+    $lat = $_POST["post_lat"];
+    $lng = $_POST["post_lng"];
 
     //300m/range
     $range = 5;
@@ -19,7 +21,7 @@
 
     //URL
     $url  = sprintf("%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s", $uri, "?format=", $format, "&keyid=", $acckey,
-        "&latitude=", $lat,"&longitude=",$lon,"&range=",$range, "&hit_per_page=",$hits, "&freeword=",$word_enc);
+        "&latitude=", $lat,"&longitude=",$lng,"&range=",$range, "&hit_per_page=",$hits, "&freeword=",$word_enc);
     //API実行
     $json = file_get_contents($url);
 
@@ -27,6 +29,8 @@
 
     $_SESSION["obj"] = $obj;
     $_SESSION["freeword"] = $word;
+    $_SESSION["lat"] = $lat;
+    $_SESSION["lng"] = $lng;
 
     header("Location: result.php");
 
