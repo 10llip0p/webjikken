@@ -21,7 +21,8 @@
 		</div>
     	<form action="getJson.php" method="post">
 			<div class="form-group">
-				<input type="text" name="freeword" class="form-control" placeholder="ここは1単語だけ入力するところ">
+				<input type="text" name="freeword" class="form-control" placeholder="キーワード">
+				<!-- つくば市の座標 -->
 				<input type="hidden" value="36.096903" name="post_lat">
                 <input type="hidden" value="140.099045" name="post_lng">
 			</div>

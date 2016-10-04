@@ -20,7 +20,7 @@ function initMap(in_lat, in_lng) {
        }
    });
 
-   //mapでデザインの変更
+   //mapのスタイルの設定
    var styleOptions =
        [
            {
@@ -136,18 +136,18 @@ function initMap(in_lat, in_lng) {
    map.mapTypes.set('map_style', styledMap);
    map.setMapTypeId('map_style');
 
+    //Ajaxで修正後のJSONを取得
     $.ajax({
            type: "POST",
            url: "../geocode.php",
            dataType: "json",
        }).done(function (result) {
         jsonBody = result;
-        console.log(jsonBody);
 
         $('#total-count').text(jsonBody.total_hit_count + ' 件')
+
         //マーカーの設置
         for (var i in jsonBody.rest) {
-            console.log(i);
             marker[i] = new google.maps.Marker({
                 position: {
                     lat: jsonBody.rest[i].latitude,
@@ -166,30 +166,29 @@ function initMap(in_lat, in_lng) {
                 content: contentThing
             })
             markerEvent(i);
-          // console.log(marker[i]);
         }
    });
 
+    //Mapの中心座標を取得
     google.maps.event.addListener(map, "drag", function() {
         var center = map.getCenter();
         cntr_lat = center.lat();
         cntr_lng = center.lng();
-        console.log(cntr_lat);
-        console.log(cntr_lng);
     });
 }
 
+//クリックイベントで情報を表示
 function markerEvent(i) {
     marker[i].addListener('click', function () {
         infoWindow[i].open(map, marker[i]);
     });
 }
 
+//中心座標で再検索
 $(function () {
     $('#research').submit(function () {
         $("#post_lat").val(cntr_lat.toFixed(6));
         $("#post_lng").val(cntr_lng.toFixed(6));
-        //alert($("#post_lng").val());
         return true;
     });
 })
